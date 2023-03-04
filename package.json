@@ -1,7 +1,7 @@
 {
-  "name": "show-hidden-channels",
-  "version": "1.0.1",
-  "description": "A replugged plugin which displays all hidden Channels, which can't be accessed due to Role Restrictions, this won't allow you to read them (impossible).",
+  "name": "at-someone",
+  "version": "0.9.0",
+  "description": "Be able to ping a random person on the server by sending \"@someone\".",
   "engines": {
     "node": ">=14.0.0"
   },
