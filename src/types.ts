@@ -81,6 +81,9 @@ export interface richValue
       text: string;
     }>;
   }> {}
+export interface SlateRichUtils {
+  toRichValue: (e: string) => richValue;
+}
 export interface SlateArgs {
   SlateArgs: unknown;
   accessibilityLabel: string;

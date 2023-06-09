@@ -1,14 +1,10 @@
 import { webpack } from "replugged";
 import * as Types from "../types";
-export const Slate = webpack.getBySource(
-  /\.textValue.*\.richValue.*\.placeholder/,
-) as unknown as Types.Slate;
-export const SlateRichUtilsModule = webpack.getBySource(
+export const Slate = webpack.getBySource<Types.Slate>(/\.textValue.*\.richValue.*\.placeholder/);
+export const SlateRichUtilsModule = webpack.getBySource<Types.GenericModule>(
   /textValue.*richValue.*text:""/,
-) as unknown as Types.GenericModule;
+);
 export const SlateRichUtils = {
   toRichValue: webpack.getFunctionBySource(SlateRichUtilsModule, '.split("\\n")'),
-};
-export const GuildMemberStore = webpack.getByProps(
-  "getMember",
-) as unknown as Types.GuildMemberStore;
+} as Types.SlateRichUtils;
+export const GuildMemberStore = webpack.getByProps<Types.GuildMemberStore>("getMember");

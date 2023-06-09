@@ -11,7 +11,7 @@ export const patchSlate = (): void => {
         : SlateArgs.channel.recipients;
       const randomUserId = userIds[Utils.randomNo(0, userIds.length - 1)];
       SlateArgs.textValue = SlateArgs.textValue.replace("@someone", `<@${randomUserId}>`);
-      SlateArgs.richValue = SlateRichUtils.toRichValue(SlateArgs.textValue) as Types.richValue;
+      SlateArgs.richValue = SlateRichUtils.toRichValue(SlateArgs.textValue);
     }
     return args;
   });
