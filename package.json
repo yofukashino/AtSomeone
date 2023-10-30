@@ -1,6 +1,6 @@
 {
   "name": "at-someone",
-  "version": "0.9.3",
+  "version": "1.0.0",
   "description": "Be able to ping a random person on the server by sending \"@someone\".",
   "engines": {
     "node": ">=14.0.0"
