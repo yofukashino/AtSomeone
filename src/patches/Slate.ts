@@ -1,8 +1,8 @@
 import { PluginInjector } from "../index";
-import { GuildMemberStore, Slate, SlateRichUtils } from "../lib/requiredModules";
-import * as Utils from "../lib/utils";
-import * as Types from "../types";
-export const patchSlate = (): void => {
+import { GuildMemberStore, Slate, SlateUtils } from "../lib/requiredModules";
+import Utils from "../lib/utils";
+import Types from "../types";
+export default (): void => {
   PluginInjector.before(Slate.type, "render", (args: [Types.SlateArgs]) => {
     const [SlateArgs] = args;
     if (SlateArgs.textValue.includes("@someone")) {
@@ -11,7 +11,7 @@ export const patchSlate = (): void => {
         : SlateArgs.channel.recipients;
       const randomUserId = userIds[Utils.randomNo(0, userIds.length - 1)];
       SlateArgs.textValue = SlateArgs.textValue.replace("@someone", `<@${randomUserId}>`);
-      SlateArgs.richValue = SlateRichUtils.toRichValue(SlateArgs.textValue);
+      SlateArgs.richValue = SlateUtils.toRichValue(SlateArgs.textValue);
     }
     return args;
   });

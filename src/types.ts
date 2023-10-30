@@ -1,6 +1,8 @@
 export { types as DefaultTypes } from "replugged";
 import { types as DefaultTypes } from "replugged";
-
+import { Channel } from "discord-types/general";
+export { Channel } from "discord-types/general";
+import { Store } from "replugged/dist/renderer/modules/common/flux";
 export interface GenericModule {
   [key: string]: DefaultTypes.AnyFunction;
 }
@@ -9,7 +11,7 @@ export interface Slate {
   compare: null;
   type: { $$typeof: symbol; render: DefaultTypes.AnyFunction };
 }
-export interface GuildMemberStore {
+export interface GuildMemberStore extends Store {
   getCommunicationDisabledUserMap: DefaultTypes.AnyFunction;
   getCommunicationDisabledVersion: DefaultTypes.AnyFunction;
   getMember: DefaultTypes.AnyFunction;
@@ -26,53 +28,6 @@ export interface GuildMemberStore {
   initialize: DefaultTypes.AnyFunction;
   isMember: DefaultTypes.AnyFunction;
   memberOf: DefaultTypes.AnyFunction;
-}
-export interface Channel {
-  defaultAutoArchiveDuration: undefined | number;
-  defaultThreadRateLimitPerUser: undefined | number;
-  flags_: number;
-  id: string;
-  lastMessageId: string;
-  lastPinTimestamp: string;
-  memberListId: undefined | string;
-  name: string;
-  nsfw_: boolean;
-  permissionOverwrites_: {
-    [key: string | number]: {
-      allow: bigint;
-      deny: bigint;
-      id: string;
-      type: number;
-    };
-  };
-  guild_id: string;
-  position_: number;
-  rateLimitPerUser_: number;
-  topic_: string;
-  type: number;
-  version: undefined | number;
-  accessPermissions: bigint;
-  bitrate: number;
-  flags: number;
-  nsfw: boolean;
-  recipients: string[];
-  permissionOverwrites: {
-    [key: string | number]: {
-      allow: bigint;
-      deny: bigint;
-      id: string;
-      type: number;
-    };
-  };
-  position: number;
-  rateLimitPerUser: number;
-  topic: undefined | string;
-  userLimit: number;
-  availableTags: Array<{
-    name: string;
-  }>;
-  isHidden: () => boolean;
-  isGuildVocal: () => boolean;
 }
 export interface richValue
   extends Array<{
@@ -106,3 +61,5 @@ export interface SlateArgs {
   setEditorRef: DefaultTypes.AnyFunction;
   textValue: string;
 }
+
+export * as default from "./types";
