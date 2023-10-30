@@ -5,7 +5,7 @@ import Types from "../types";
 export default (): void => {
   PluginInjector.before(Slate.type, "render", (args: [Types.SlateArgs]) => {
     const [SlateArgs] = args;
-    if (SlateArgs.textValue.includes("@someone")) {
+    if (SlateArgs.textValue.match(/(?:^|\s)@someone(?=\s|$)/g)) {
       const userIds = SlateArgs.channel.guild_id
         ? (GuildMemberStore.getMemberIds(SlateArgs.channel.guild_id) as [])
         : SlateArgs.channel.recipients;
