@@ -38,27 +38,13 @@ devDependencies:
     specifier: ^2.8.8
     version: 2.8.8
   replugged:
-    specifier: ^4.7.4
-    version: 4.7.4(@codemirror/view@6.13.0)(@lezer/common@1.1.0)
+    specifier: ^4.7.6
+    version: 4.7.6(@codemirror/view@6.13.0)(@lezer/common@1.1.0)
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
 
 packages:
-
-  /@codemirror/autocomplete@6.7.1(@codemirror/language@6.9.2)(@codemirror/state@6.3.1)(@codemirror/view@6.13.0)(@lezer/common@1.0.3):
-    resolution: {integrity: sha512-hSxf9S0uB+GV+gBsjY1FZNo53e1FFdzPceRfCfD1gWOnV6o21GfB5J5Wg9G/4h76XZMPrF0A6OCK/Rz5+V1egg==}
-    peerDependencies:
-      '@codemirror/language': ^6.0.0
-      '@codemirror/state': ^6.0.0
-      '@codemirror/view': ^6.0.0
-      '@lezer/common': ^1.0.0
-    dependencies:
-      '@codemirror/language': 6.9.2
-      '@codemirror/state': 6.3.1
-      '@codemirror/view': 6.13.0
-      '@lezer/common': 1.0.3
-    dev: true
 
   /@codemirror/autocomplete@6.7.1(@codemirror/language@6.9.2)(@codemirror/state@6.3.1)(@codemirror/view@6.13.0)(@lezer/common@1.1.0):
     resolution: {integrity: sha512-hSxf9S0uB+GV+gBsjY1FZNo53e1FFdzPceRfCfD1gWOnV6o21GfB5J5Wg9G/4h76XZMPrF0A6OCK/Rz5+V1egg==}
@@ -80,16 +66,16 @@ packages:
       '@codemirror/language': 6.9.2
       '@codemirror/state': 6.3.1
       '@codemirror/view': 6.13.0
-      '@lezer/common': 1.0.3
+      '@lezer/common': 1.1.0
     dev: true
 
   /@codemirror/lang-css@6.2.1(@codemirror/view@6.13.0):
     resolution: {integrity: sha512-/UNWDNV5Viwi/1lpr/dIXJNWiwDxpw13I4pTUAsNxZdg6E0mI2kTQb0P2iHczg1Tu+H4EBgJR+hYhKiHKko7qg==}
     dependencies:
-      '@codemirror/autocomplete': 6.7.1(@codemirror/language@6.9.2)(@codemirror/state@6.3.1)(@codemirror/view@6.13.0)(@lezer/common@1.0.3)
+      '@codemirror/autocomplete': 6.7.1(@codemirror/language@6.9.2)(@codemirror/state@6.3.1)(@codemirror/view@6.13.0)(@lezer/common@1.1.0)
       '@codemirror/language': 6.9.2
       '@codemirror/state': 6.3.1
-      '@lezer/common': 1.0.3
+      '@lezer/common': 1.1.0
       '@lezer/css': 1.1.2
     transitivePeerDependencies:
       - '@codemirror/view'
@@ -606,10 +592,6 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@lezer/common@1.0.3:
-    resolution: {integrity: sha512-JH4wAXCgUOcCGNekQPLhVeUtIqjH0yPBs7vvUdSjyQama9618IOKFJwkv2kcqdhF0my8hQEgCTEJU0GIgnahvA==}
-    dev: true
-
   /@lezer/common@1.1.0:
     resolution: {integrity: sha512-XPIN3cYDXsoJI/oDWoR2tD++juVrhgIago9xyKhZ7IhGlzdDM9QgC8D8saKNCz5pindGcznFr2HBSsEQSWnSjw==}
     dev: true
@@ -624,7 +606,7 @@ packages:
   /@lezer/highlight@1.1.6:
     resolution: {integrity: sha512-cmSJYa2us+r3SePpRCjN5ymCqCPv+zyXmDl0ciWtVaNiORT/MxM7ZgOMQZADD0o51qOaOg24qc/zBViOIwAjJg==}
     dependencies:
-      '@lezer/common': 1.0.3
+      '@lezer/common': 1.1.0
     dev: true
 
   /@lezer/lr@1.3.6:
@@ -1143,7 +1125,7 @@ packages:
   /call-bind@1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
     dependencies:
-      function-bind: 1.1.1
+      function-bind: 1.1.2
       get-intrinsic: 1.2.1
     dev: true
 
@@ -1787,10 +1769,6 @@ packages:
     dev: true
     optional: true
 
-  /function-bind@1.1.1:
-    resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
-    dev: true
-
   /function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
     dev: true
@@ -1817,7 +1795,7 @@ packages:
   /get-intrinsic@1.2.1:
     resolution: {integrity: sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==}
     dependencies:
-      function-bind: 1.1.1
+      function-bind: 1.1.2
       has: 1.0.3
       has-proto: 1.0.1
       has-symbols: 1.0.3
@@ -1976,7 +1954,7 @@ packages:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
     dependencies:
-      function-bind: 1.1.1
+      function-bind: 1.1.2
     dev: true
 
   /hasown@2.0.0:
@@ -2632,8 +2610,8 @@ packages:
       rc: 1.2.8
     dev: true
 
-  /replugged@4.7.4(@codemirror/view@6.13.0)(@lezer/common@1.1.0):
-    resolution: {integrity: sha512-jTbMtTuwt7NSguVx6JgaHiqy1vhiA74VJUFfxzdbhnICr2h4AUkvNkLGwapDpu8oECVPmTNCNO+MNjml+8jmOA==}
+  /replugged@4.7.6(@codemirror/view@6.13.0)(@lezer/common@1.1.0):
+    resolution: {integrity: sha512-E7qxlBRlvpQiXz3zXUO/IH0TQqXxgLmQCO/BMugNDqqtWEbm3W5VIIXYnnrPce5UA0n8TgIzxh0fORl+22sS2w==}
     engines: {node: '>=18.0.0', pnpm: '>=8.0.0'}
     hasBin: true
     requiresBuild: true
@@ -2707,7 +2685,7 @@ packages:
     resolution: {integrity: sha512-iMDbmAWtfU+MHpxt/I5iWI7cY6YVEZUQ3MBgPQ++XD1PELuJHIl82xBmObyP2KyQmkNB2dsqF7seoQQiAn5yDQ==}
     hasBin: true
     dependencies:
-      is-core-module: 2.12.1
+      is-core-module: 2.13.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true

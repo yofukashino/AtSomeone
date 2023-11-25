@@ -2,17 +2,17 @@
   "id": "dev.tharki.AtSomeone",
   "name": "AtSomeone",
   "description": "Be able to ping a random person on the server by sending \"@someone\".",
-  "image": "https://tharki-god.github.io/files-random-host/bdpluginsassets/someone.gif",
-  "source": "https://github.com/Tharki-God/AtSomeone",
+  "image": "https://TharkiDev.github.io/files-random-host/bdpluginsassets/someone.gif",
+  "source": "https://github.com/TharkiDev/AtSomeone",
   "author": {
     "name": "Ahlawat",
     "discordID": "1025214794766221384",
-    "github": "Tharki-God"
+    "github": "TharkiDev"
   },
   "version": "1.0.1",
   "updater": {
     "type": "github",
-    "id": "Tharki-God/AtSomeone"
+    "id": "TharkiDev/AtSomeone"
   },
   "license": "MIT",
   "type": "replugged-plugin",

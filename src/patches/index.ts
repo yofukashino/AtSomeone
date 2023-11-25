@@ -1,6 +1,6 @@
 import patchSlate from "./Slate";
 import patchAutocompleteOptions from "./AutocompleteOptions";
-export const applyInjections = (): void => {
+export default (): void => {
   patchAutocompleteOptions();
   patchSlate();
 };
