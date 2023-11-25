@@ -12,7 +12,7 @@ Install Link:
 
 [![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=TharkiDev/AtSomeone&source=github)
 
-![image](https://TharkiDev.github.io/files-random-host/bdpluginsassets/someone.gif)
+![image](https://i.imgur.com/B2I91re.gif)
 
 <sub>Inspired by an Aliucord React Native plugin made by
 [C10udburst](https://github.com/c10udburst-discord/Aliucord-RightNow-Plugins/tree/master/AtSomeone).</sub>
