@@ -3,16 +3,16 @@
   "name": "AtSomeone",
   "description": "Be able to ping a random person on the server by sending \"@someone\".",
   "image": "https://i.imgur.com/B2I91re.gif",
-  "source": "https://github.com/TharkiDev/AtSomeone",
+  "source": "https://github.com/YofukashiNo/AtSomeone",
   "author": {
-    "name": "Ahlawat",
+    "name": "Nanakusa",
     "discordID": "1121961711080050780",
-    "github": "TharkiDev"
+    "github": "YofukashiNo"
   },
   "version": "1.0.4",
   "updater": {
     "type": "github",
-    "id": "TharkiDev/AtSomeone"
+    "id": "YofukashiNo/AtSomeone"
   },
   "license": "MIT",
   "type": "replugged-plugin",

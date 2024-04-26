@@ -1,11 +1,25 @@
 import { webpack } from "replugged";
 import Types from "../types";
-export const Slate = webpack.getBySource<Types.Slate>("isSubmitButtonEnabled:");
-export const SlateUtils = webpack.getByProps<Types.SlateRichUtils>("toRichValue");
-export const { exports: ChannelAutoCompleteOptions } = webpack.getBySource("channel-autocomplete", {
-  raw: true,
-});
-export const ChannelAutoCompleteOptionsUtils = webpack.getBySource<{
-  default: Types.DefaultTypes.AnyFunction;
-}>("onMaybeShowAutocomplete(){");
-export const GuildMemberStore = webpack.getByStoreName<Types.GuildMemberStore>("GuildMemberStore");
+
+export const Modules: Types.Modules = {};
+
+Modules.loadModules = async (): Promise<void> => {
+  Modules.Slate ??= await webpack.waitForModule<Types.Slate>(
+    webpack.filters.bySource("isSubmitButtonEnabled:"),
+  );
+  Modules.SlateUtils ??= await webpack.waitForProps<Types.SlateRichUtils>("toRichValue");
+  Modules.ChannelAutoCompleteOptions = await webpack
+    .waitForModule<{ exports: Types.ChannelAutoCompleteOptions }>(
+      webpack.filters.bySource("channel-autocomplete"),
+      {
+        raw: true,
+      },
+    )
+    .then(({ exports }) => exports);
+  Modules.ChannelAutoCompleteOptionsUtils = await webpack.waitForModule<Types.GenericModule>(
+    webpack.filters.bySource("onMaybeShowAutocomplete(){"),
+  );
+  Modules.GuildMemberStore ??= webpack.getByStoreName<Types.GuildMemberStore>("GuildMemberStore");
+};
+
+export default Modules;
