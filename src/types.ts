@@ -185,6 +185,7 @@ export namespace Types {
   export interface Modules {
     loadModules?: () => Promise<void>;
     Slate?: Slate;
+    SlateUtilsModule?: GenericModule;
     SlateUtils?: SlateRichUtils;
     ChannelAutoCompleteOptions?: ChannelAutoCompleteOptions;
     ChannelAutoCompleteOptionsUtils?: GenericModule;

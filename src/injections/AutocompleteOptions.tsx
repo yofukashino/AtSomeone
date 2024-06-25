@@ -1,12 +1,18 @@
+import { webpack } from "replugged";
 import { PluginInjector } from "../index";
 import Modules from "../lib/requiredModules";
 import Utils from "../lib/utils";
 import Types from "../types";
 
 export const injectChannelAutoCompleteOptions = (): void => {
+  const loader = webpack.getFunctionKeyBySource(
+    Modules.ChannelAutoCompleteOptions,
+    "canMentionEveryone",
+  );
+
   PluginInjector.after(
     Modules.ChannelAutoCompleteOptions,
-    "default",
+    loader,
     ([{ textValue }]: [{ textValue: string }], res) => {
       const [mentions] = textValue.match(/(?:^|\s)@(\S+)?(?=\s|$)/g) || [""];
       if (mentions && Utils.isMentioningSomeone(mentions)) {
@@ -26,8 +32,14 @@ export const injectChannelAutoCompleteOptions = (): void => {
 };
 
 export const injectChannelAutoCompleteOptionsUtils = (): void => {
+  const ChannelAutoCompleteOptionsUtilsMain =
+    webpack.getFunctionBySource<Types.DefaultTypes.AnyFunction>(
+      Modules.ChannelAutoCompleteOptionsUtils,
+      "selectResult",
+    );
+
   PluginInjector.after(
-    Modules.ChannelAutoCompleteOptionsUtils.default.prototype,
+    ChannelAutoCompleteOptionsUtilsMain.prototype,
     "onResultClick",
     (args: [number], res, instance: Types.ChannelAutoCompleteOptionsUtilsInstance) => {
       if (
