@@ -94,7 +94,9 @@ export namespace Types {
             isVisible?: boolean;
             query?: {
               isLoading?: boolean;
-              options?: Record<string, unknown>;
+              options?: Record<string, unknown> & {
+                mentions: Record<"channel" | "global" | "role" | "user", 0 | 1>;
+              };
               queryText?: string;
               resultCount?: number;
               results?: {

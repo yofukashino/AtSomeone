@@ -19,12 +19,16 @@ export const injectChannelAutoCompleteOptions = (): void => {
         res ??= [];
         res[0] ??= {};
         res[0].isVisible = true;
+        if (res?.[0].query?.options?.mentions) res[0].query.options.mentions.global = 1;
         if (!res?.[0].query?.results.globals?.some?.((g) => g.test === "someone"))
           res?.[0]?.query?.results?.globals?.push?.({
             description: "We do a little trolling here.",
             test: "someone",
             text: "@Someone",
           });
+
+        if (res?.[0]?.query?.resultCount)
+          res[0].query.resultCount = Object.values(res?.[0]?.query?.results).flat(10).length;
       }
       return res;
     },

@@ -5,7 +5,7 @@ export const Modules: Types.Modules = {};
 
 Modules.loadModules = async (): Promise<void> => {
   Modules.Slate ??= await webpack
-    .waitForModule<Types.Slate>(webpack.filters.bySource("isSubmitButtonEnabled:"), {
+    .waitForModule<Types.Slate>(webpack.filters.bySource("chat input type must be set"), {
       timeout: 10000,
     })
     .catch(() => {
