@@ -1,6 +1,6 @@
 ### AtSomeone
 
-Ping a random person by sending "@someone".
+Ping a random person by sending "<@someone>".
 
 Don't annoy random people or you might get banned from some servers. (●'◡'●) <sub>Don't ask me how i
 know that.</sub>
