@@ -4,45 +4,23 @@ import Types from "../types";
 export const Modules: Types.Modules = {};
 
 Modules.loadModules = async (): Promise<void> => {
-  Modules.Slate ??= await webpack
-    .waitForModule<Types.Slate>(webpack.filters.bySource("chat input type must be set"), {
-      timeout: 10000,
-    })
+  Modules.SlateParser ??= await webpack
+    .waitForModule<Types.DefaultTypes.ModuleExports>(
+      webpack.filters.bySource("returnMentionIds:!0"),
+      {
+        timeout: 10000,
+      },
+    )
     .catch(() => {
       throw new Error("Failed To Find Slate Module");
     });
 
-  Modules.SlateUtilsModule ??= await webpack
-    .waitForModule<Types.GenericModule>(webpack.filters.bySource('richValue:[{type:"line",'), {
+  Modules.MentionAutoComplete = await webpack
+    .waitForModule<Types.MentionAutoComplete>(webpack.filters.bySource(/sentinel:\w+?\.ME/), {
       timeout: 10000,
     })
     .catch(() => {
-      throw new Error("Failed To Find SlateUtils Module");
-    });
-
-  Modules.SlateUtils ??= {
-    toRichValue: webpack.getFunctionBySource(Modules.SlateUtilsModule, '.split("\\n")'),
-  };
-
-  Modules.ChannelAutoCompleteOptions = await webpack
-    .waitForModule<{ exports: Types.ChannelAutoCompleteOptions }>(
-      webpack.filters.bySource("channel-autocomplete"),
-      {
-        raw: true,
-        timeout: 10000,
-      },
-    )
-    .then(({ exports }) => exports)
-    .catch(() => {
-      throw new Error("Failed To Find ChannelAutoCompleteOptions Module");
-    });
-
-  Modules.ChannelAutoCompleteOptionsUtils = await webpack
-    .waitForModule<Types.GenericModule>(webpack.filters.bySource("onMaybeShowAutocomplete(){"), {
-      timeout: 10000,
-    })
-    .catch(() => {
-      throw new Error("Failed To Find ChannelAutoCompleteOptionsUtils Module");
+      throw new Error("Failed To Find MentionAUtoComplete Module");
     });
 
   Modules.GuildMemberStore ??= webpack.getByStoreName<Types.GuildMemberStore>("GuildMemberStore");

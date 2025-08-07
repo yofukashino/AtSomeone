@@ -1,10 +1,10 @@
 import Modules from "../lib/requiredModules";
-import injectSlate from "./Slate";
-import injectAutocompleteOptions from "./AutocompleteOptions";
+import injectMentionAutoComplete from "./MentionAutoComplete";
+import injectSlateParser from "./SlateParser";
 export const applyInjections = async (): Promise<void> => {
   await Modules.loadModules();
-  injectAutocompleteOptions();
-  injectSlate();
+  injectMentionAutoComplete();
+  injectSlateParser();
 };
 
 export default { applyInjections };

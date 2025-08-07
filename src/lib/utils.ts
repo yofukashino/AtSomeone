@@ -1,5 +1,6 @@
+import { channels as UltimateChannelStore } from "replugged/common";
 import Modules from "./requiredModules";
-import Types from "../types";
+
 export const randomNo = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
@@ -20,10 +21,16 @@ export const isMentioningSomeone = (query: string): boolean => {
   return levenshteinDistance(typedPart, targetPart) <= (typedPart.length <= 3 ? 1 : 2);
 };
 
-export const randomUserId = (channel: Types.Channel): string => {
-  const userIds = channel.guild_id
-    ? Modules.GuildMemberStore?.getMemberIds(channel.guild_id)
-    : channel.recipients;
+export const randomUserId = ({
+  channelId,
+  guildId,
+}: {
+  guildId?: string;
+  channelId?: string;
+}): string => {
+  const channel = UltimateChannelStore.getChannel(channelId ?? UltimateChannelStore.getChannelId());
+  guildId ??= channel.getGuildId();
+  const userIds = guildId ? Modules.GuildMemberStore?.getMemberIds(guildId) : channel.recipients;
   return userIds[randomNo(0, userIds.length - 1)];
 };
 

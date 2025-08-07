@@ -63,134 +63,67 @@ export namespace Types {
     setEditorRef: DefaultTypes.AnyFunction;
     textValue: string;
   }
-  export interface ChannelAutoCompleteOptions {
-    default: (
-      options: {
-        canMentionChannels: boolean;
-        canMentionRoles: boolean;
-        canOnlyUseTextCommands: boolean;
-        canSendStickers: boolean;
-        channel: Channel;
-        editorHeight: number;
-        editorRef: React.Ref<unknown>;
-        expressionPickerView: unknown;
-        focused: boolean;
-        guild: Guild | null;
-        onSendMessage: DefaultTypes.AnyFunction;
-        onSendSticker: DefaultTypes.AnyFunction;
-        onVisibilityChange: DefaultTypes.AnyFunction;
-        position: unknown;
-        setValue: DefaultTypes.AnyFunction;
-        textValue: string;
-        type: Record<string, unknown>;
-        useNewSlashCommands: boolean;
-      },
-      editorRef: React.Ref<unknown>,
-      optionsRef: React.Ref<unknown>,
-    ) =>
-      | [
-          {
-            didInitialQuery?: boolean;
-            isVisible?: boolean;
-            query?: {
-              isLoading?: boolean;
-              options?: Record<string, unknown> & {
-                mentions: Record<"channel" | "global" | "role" | "user", 0 | 1>;
-              };
-              queryText?: string;
-              resultCount?: number;
-              results?: {
-                globals?: Array<{
-                  description?: string;
-                  test?: string;
-                  text?: string;
-                }>;
-                roles?: Array<{
-                  color?: number;
-                  colorString?: string;
-                  flags?: number;
-                  hoist?: boolean;
-                  icon?: string;
-                  id?: string;
-                  managed?: boolean;
-                  mentionable?: boolean;
-                  name?: string;
-                  originalPosition?: number;
-                  permissions?: bigint;
-                  position?: number;
-                  tags?: Record<string, string>;
-                  unicodeEmoji?: string | null;
-                }>;
-                users?: Array<{
-                  comparator: string;
-                  nick: string | null;
-                  score: number;
-                  status: string;
-                }>;
-              };
-              type?: string;
-              typeInfo?: Record<string, unknown>;
-            };
-            selectedIndex?: number | null;
-          },
-          Record<string, unknown>,
-          Record<string, unknown>,
-        ]
-      | []
-      | void;
+
+  export interface ResultsType {
+    globals: Array<{
+      description: string;
+      test: string;
+      text: string;
+    }>;
+    roles: Array<{
+      color: number;
+      colorString: string;
+      flags: number;
+      hoist: boolean;
+      icon: string;
+      id: string;
+      managed: boolean;
+      mentionable: boolean;
+      name: string;
+
+      originalPosition: number;
+      permissions: bigint;
+      position: number;
+      tags: Record<string, string>;
+      unicodeEmoji: string | null;
+    }>;
+    users: Array<{
+      comparator: string;
+      nick: string | null;
+      score: number;
+      status: string;
+    }>;
   }
-  export interface ChannelAutoCompleteOptionsUtilsInstance extends DefaultTypes.ObjectExports {
-    props: {
-      channel: Types.Channel;
-    };
-    state: {
+
+  export interface MentionAutoComplete {
+    matches: DefaultTypes.AnyFunction;
+    onSelect: (opts: {
+      channel: Channel;
+      guild?: Guild;
+      index: number;
+      options: Record<string, unknown> & { insertText: (e: string) => void };
       queryText: string;
-      resultCount: number;
-      type: string;
-      typeInfo: Record<string, unknown>;
-      query: {
-        options: {
-          insertText: (toReplace: string, replacement: string) => void;
-        };
-        results: {
-          globals: Array<{
-            description: string;
-            test: string;
-            text: string;
-          }>;
-          roles: Array<{
-            color: number;
-            colorString: string;
-            flags: number;
-            hoist: boolean;
-            icon: string;
-            id: string;
-            managed: boolean;
-            mentionable: boolean;
-            name: string;
-            originalPosition: number;
-            permissions: bigint;
-            position: number;
-            tags: Record<string, string>;
-            unicodeEmoji: string | null;
-          }>;
-          users: Array<{
-            comparator: string;
-            nick: string | null;
-            score: number;
-            status: string;
-          }>;
-        };
-      };
+      results: ResultsType;
+      tabOrEnter?: boolean;
+      type: number;
+    }) => { type: "MENTION" };
+    queryResults: (
+      channel: Channel,
+      guild: Guild,
+      query: string,
+      options: Record<string, unknown>,
+    ) => {
+      results: ResultsType;
     };
+    renderResults: DefaultTypes.AnyFunction;
+    sentinel: "@";
+    stores: Store[];
   }
   export interface Modules {
     loadModules?: () => Promise<void>;
-    Slate?: Slate;
-    SlateUtilsModule?: GenericModule;
-    SlateUtils?: SlateRichUtils;
-    ChannelAutoCompleteOptions?: ChannelAutoCompleteOptions;
-    ChannelAutoCompleteOptionsUtils?: GenericModule;
+    SlateParser?: DefaultTypes.ModuleExports;
+    MentionAutoComplete?: MentionAutoComplete;
+
     GuildMemberStore?: GuildMemberStore;
   }
 }
