@@ -1,10 +1,19 @@
-import Modules from "../lib/requiredModules";
-import injectMentionAutoComplete from "./MentionAutoComplete";
-import injectSlateParser from "./SlateParser";
+import { PluginInjector, PluginLogger } from "@this";
+import Modules from "@lib/RequiredModules";
+
+const InjectionNames = ["MentionAutoComplete.ts", "SlateParser.ts"] as const;
+
 export const applyInjections = async (): Promise<void> => {
-  await Modules.loadModules();
-  injectMentionAutoComplete();
-  injectSlateParser();
+  try {
+    await Modules.loadModules();
+    await Promise.all(InjectionNames.map((name) => import(`./${name}`)));
+  } catch (err: unknown) {
+    PluginLogger.error(err);
+  }
 };
 
-export default { applyInjections };
+export const removeInjections = (): void => {
+  PluginInjector.uninjectAll();
+};
+
+export default { applyInjections, removeInjections };

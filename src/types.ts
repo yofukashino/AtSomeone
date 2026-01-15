@@ -1,37 +1,23 @@
 import { types } from "replugged";
-import { Store } from "replugged/dist/renderer/modules/common/flux";
-import GeneralDiscordTypes from "discord-types/general";
+import type * as flux from "replugged/dist/renderer/modules/common/flux";
+import type GeneralDiscordTypes from "discord-types/general";
+
+import type { GuildMemberStore } from "@lib/RequiredModules/GuildMemberStore";
+import type { MentionAutoComplete } from "@lib/RequiredModules/MentionAutoComplete";
+import type { SlaterParser } from "@lib/RequiredModules/SlateParser";
 
 export namespace Types {
   export import DefaultTypes = types;
   export type Channel = GeneralDiscordTypes.Channel;
   export type Guild = GeneralDiscordTypes.Guild;
-  export type GenericModule = Record<string, DefaultTypes.AnyFunction> & {
-    default: DefaultTypes.AnyFunction;
-  };
+  export type Store = flux.Store;
+  /* 
   export interface Slate {
     $$typeof: symbol;
     compare: null;
     type: { $$typeof: symbol; render: DefaultTypes.AnyFunction };
   }
-  export interface GuildMemberStore extends Store {
-    getCommunicationDisabledUserMap: DefaultTypes.AnyFunction;
-    getCommunicationDisabledVersion: DefaultTypes.AnyFunction;
-    getMember: DefaultTypes.AnyFunction;
-    getMemberIds: (guildId: string) => string[];
-    getMemberRoleWithPendingUpdates: DefaultTypes.AnyFunction;
-    getMembers: DefaultTypes.AnyFunction;
-    getMutableAllGuildsAndMembers: DefaultTypes.AnyFunction;
-    getNick: DefaultTypes.AnyFunction;
-    getNicknameGuildsMapping: DefaultTypes.AnyFunction;
-    getNicknames: DefaultTypes.AnyFunction;
-    getPendingRoleUpdates: DefaultTypes.AnyFunction;
-    getSelfMember: DefaultTypes.AnyFunction;
-    getTrueMember: DefaultTypes.AnyFunction;
-    initialize: DefaultTypes.AnyFunction;
-    isMember: DefaultTypes.AnyFunction;
-    memberOf: DefaultTypes.AnyFunction;
-  }
+
   export type RichValue = Array<{
     type: string;
     children: Array<{
@@ -62,69 +48,14 @@ export namespace Types {
     richValue: RichValue;
     setEditorRef: DefaultTypes.AnyFunction;
     textValue: string;
-  }
+  } */
 
-  export interface ResultsType {
-    globals: Array<{
-      description: string;
-      test: string;
-      text: string;
-    }>;
-    roles: Array<{
-      color: number;
-      colorString: string;
-      flags: number;
-      hoist: boolean;
-      icon: string;
-      id: string;
-      managed: boolean;
-      mentionable: boolean;
-      name: string;
-
-      originalPosition: number;
-      permissions: bigint;
-      position: number;
-      tags: Record<string, string>;
-      unicodeEmoji: string | null;
-    }>;
-    users: Array<{
-      comparator: string;
-      nick: string | null;
-      score: number;
-      status: string;
-    }>;
-  }
-
-  export interface MentionAutoComplete {
-    matches: DefaultTypes.AnyFunction;
-    onSelect: (opts: {
-      channel: Channel;
-      guild?: Guild;
-      index: number;
-      options: Record<string, unknown> & { insertText: (e: string) => void };
-      queryText: string;
-      results: ResultsType;
-      tabOrEnter?: boolean;
-      type: number;
-    }) => { type: "MENTION" };
-    queryResults: (
-      channel: Channel,
-      guild: Guild,
-      query: string,
-      options: Record<string, unknown>,
-    ) => {
-      results: ResultsType;
-    };
-    renderResults: DefaultTypes.AnyFunction;
-    sentinel: "@";
-    stores: Store[];
-  }
   export interface Modules {
+    Proxy: Exclude<Modules, "Proxy" | "loadModules">;
     loadModules?: () => Promise<void>;
-    SlateParser?: DefaultTypes.ModuleExports;
-    MentionAutoComplete?: MentionAutoComplete;
-
     GuildMemberStore?: GuildMemberStore;
+    MentionAutoComplete?: MentionAutoComplete;
+    SlateParser?: SlaterParser;
   }
 }
 export default Types;
