@@ -13,7 +13,7 @@ PluginInjector.after(MentionAutoComplete, "queryResults", ([, , query], res) => 
     description: "We do a little trolling here.",
     test: "someone",
     inlineAutocompleteType: "someoneMentionInput",
-    text: "@Someone",
+    text: "@someone",
   });
 
   return res;

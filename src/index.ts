@@ -5,10 +5,10 @@ import Injections from "./injections/index";
 
 export const start = (): void => {
   PluginLogger.verbose("It's not a joke if it's a feature.");
-  void Injections.applyInjections().catch((err) => PluginLogger.error(err));
+  void Injections.applyInjections();
 };
 
 export const stop = (): void => {
   PluginLogger.verbose("Shame on you, onii-chan.");
-  PluginInjector.uninjectAll();
+  Injections.removeInjections();
 };

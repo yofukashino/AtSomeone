@@ -36,9 +36,7 @@ function proxyModule<K extends Exclude<keyof Types.Modules, "loadModules" | "Pro
   });
 }
 
-const ModuleNames = ["GuildMemberStore",
-    "MentionAutoComplete",
-    "SlateParser",] as const;
+const ModuleNames = ["GuildMemberStore", "MentionAutoComplete", "SlateParser"] as const;
 
 Modules.loadModules = async function (): Promise<void> {
   await Promise.all(
@@ -49,8 +47,6 @@ Modules.loadModules = async function (): Promise<void> {
   );
 };
 
-export const {     GuildMemberStore,
-    MentionAutoComplete,
-    SlateParser, } = Modules.Proxy;
+export const { GuildMemberStore, MentionAutoComplete, SlateParser } = Modules.Proxy;
 
 export default Modules;
