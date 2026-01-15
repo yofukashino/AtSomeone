@@ -19,7 +19,6 @@ export const isMentioningSomeone = (query: string): boolean => {
   if (query === "@") return true;
   const typedPart = query.slice(1);
   const targetPart = "someone".slice(0, typedPart.length);
-  console.log(levenshteinDistance(typedPart, targetPart));
   return levenshteinDistance(typedPart, targetPart) <= 2;
 };
 

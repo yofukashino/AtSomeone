@@ -8,7 +8,7 @@ PluginInjector.after(MentionAutoComplete, "queryResults", ([, , query], res) => 
     res.results.globals.some((g) => g.test === "someone")
   )
     return res;
-  console.log(res.results.globals);
+
   res.results.globals.push({
     description: "We do a little trolling here.",
     test: "someone",
