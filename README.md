@@ -2,7 +2,7 @@
 
 Ping a random person by sending "<@someone>".
 
-Don't annoy random people or you might get banned from some servers. (●'◡'●) <sub>Don't ask me how i
+Don't annoy random people or you might get banned from some servers. <sub>Don't ask me how i
 know that.</sub>
 
 Direct Download Link: 
@@ -39,9 +39,7 @@ Install Link:
 - Just make a pull request
 
 ### How Do I support without pull request?
-- You Can Donate on my [ko-fi](https://ko-fi.com/yofukashino) or UPI at `yofukashi.no.singh@fam`
-
-[![Buy Me a Coffee at ko-fi.com](https://storage.ko-fi.com/cdn/kofi3.png?v=3)](https://ko-fi.com/yofukashino)
+- You Can Donate on UPI at `yofukashinooo@oksbi` or Follow me on twitch [@yofukashino_](https://twitch.tv/yofukashino_)
 
 ### Where can I find other plugins by you?
 
