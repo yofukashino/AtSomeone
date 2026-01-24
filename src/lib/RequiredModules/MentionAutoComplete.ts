@@ -59,10 +59,10 @@ export interface MentionAutoComplete {
 }
 
 export default await webpack
-  .waitForModule(webpack.filters.bySource(/sentinel:\w+?\.ME/), {
+  .waitForModule(webpack.filters.bySource(/sentinel:"@"/), {
     timeout: 10000,
   })
   .then((mod) => webpack.getExportsForProps<MentionAutoComplete>(mod, ["sentinel", "queryResults"]))
   .catch(() => {
-    throw new Error("Failed To Find MentionAUtoComplete Module");
+    throw new Error("Failed To Find MentionAutoComplete Module");
   });
